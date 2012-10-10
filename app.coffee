@@ -13,6 +13,7 @@ app.get '/:q', (req, res) ->
 	#request "http://www.google.com/search?&q=luke+donald&tbs=itp:face#q=#{q}&safe=off&tbm=isch&tbs=itp:face", (err, response, body) ->
 	request "http://bing.com/images/search?qpvt=#{q}&q=#{q}&qft=+filterui:face-face&FORM=R5IR30", (err, response, body) ->
 		ok = false
+		console.log(response.statusCode)
 		if !err and response.statusCode == 200
 			img_url = getimage.get body
 			if img_url
