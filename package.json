@@ -27,12 +27,14 @@
     "test": "grunt travis --verbose"
   },
   "devDependencies": {
-    "grunt": "~0.3.16"
+    "grunt": "~0.3.16",
+    "grunt-coffee": "0.0.6",
+    "supertest": "0.x"
   },
   "dependencies": {
     "express": "3.x",
-    "grunt-coffee": "0.0.6",
-    "npm": "1.1.x"
+    "npm": "1.1.x",
+    "request": "2.x"
   },  
   "keywords": []
 }

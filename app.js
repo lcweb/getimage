@@ -1,12 +1,38 @@
-var app, express, port;
+var app, express, getimage, port, request;
 
 express = require('express');
+
+request = require('request');
+
+getimage = require('./lib/getimage.js');
 
 app = express();
 
 app.get('/', function(req, res) {
   return res.send('hello');
 });
+
+app.get('/:q', function(req, res) {
+  var q;
+  q = req.param('q');
+  return request("http://bing.com/images/search?qpvt=" + q + "&q=" + q + "&qft=+filterui:face-face&FORM=R5IR30", function(err, response, body) {
+    var img_url, ok;
+    ok = false;
+    if (!err && response.statusCode === 200) {
+      img_url = getimage.get(body);
+      if (img_url) {
+        ok = true;
+      }
+    }
+    if (ok) {
+      return res.redirect(img_url);
+    } else {
+      return res.status(500).send('500');
+    }
+  });
+});
+
+exports.app = app;
 
 port = process.env.PORT || 5000;
 
