@@ -18,9 +18,10 @@ app.get('/:q', function(req, res) {
   return request("http://bing.com/images/search?qpvt=" + q + "&q=" + q + "&qft=+filterui:face-face&FORM=R5IR30", function(err, response, body) {
     var img_url, ok;
     ok = false;
-    console.log(response.statusCode);
+    console.log(response.statusCode + ' - ' + err);
     if (!err && response.statusCode === 200) {
       img_url = getimage.get(body);
+      console.log('url: ' + img_url);
       if (img_url) {
         ok = true;
       }
