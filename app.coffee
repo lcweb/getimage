@@ -16,6 +16,7 @@ app.get '/:q', (req, res) ->
 		console.log(response.statusCode)
 		if !err and response.statusCode == 200
 			img_url = getimage.get body
+			console.log('url: ' + img_url)
 			if img_url
 				ok = true
 
