@@ -2,7 +2,7 @@ exports.awesome = () ->
 	'awesome'
 
 exports.get = (body) ->
-	a = s_from_multi body, ['class="sg_u', 'src="']
+	a = s_from_multi body, ['SafeSearch.submit', 'src="']
 	if !a
 		return null
 	a = s_to a, '"'

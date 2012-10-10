@@ -23,8 +23,8 @@ app.get '/:q', (req, res) ->
 		if ok
 			res.redirect img_url
 		else
-			#res.status(500).send('500')
-			res.set('Content-Type', 'text/plain').send(body);
+			res.status(500).send('500')
+			#res.set('Content-Type', 'text/plain').send(body);
 		
 
 exports.app = app
