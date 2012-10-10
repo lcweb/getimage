@@ -22,7 +22,6 @@ app.get('/:q', function(req, res) {
     if (!err && response.statusCode === 200) {
       img_url = getimage.get(body);
       console.log('url: ' + img_url);
-      console.log('body: ' + body);
       if (img_url) {
         ok = true;
       }
@@ -30,7 +29,7 @@ app.get('/:q', function(req, res) {
     if (ok) {
       return res.redirect(img_url);
     } else {
-      return res.status(500).send('500');
+      return res.set('Content-Type', 'text/plain').send(body);
     }
   });
 });
