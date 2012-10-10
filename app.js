@@ -22,6 +22,7 @@ app.get('/:q', function(req, res) {
     if (!err && response.statusCode === 200) {
       img_url = getimage.get(body);
       console.log('url: ' + img_url);
+      console.log('body: ' + body);
       if (img_url) {
         ok = true;
       }
