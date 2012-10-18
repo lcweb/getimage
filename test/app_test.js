@@ -29,14 +29,26 @@ exports['awesome'] = {
   'no args': function(test) {
 
     supertest(app)
-      .get('/tiger+woods')
-      .expect(302)
+      .get('/face/tiger+woods')
+      .expect(302)    
       .end(function (err, res) {
         if (err) {
           throw err;
         }
         test.done();
-      });
+      });     
 
+  },
+
+  'flag': function(test) {
+    supertest(app)
+      .get('/flag/spain')
+      .expect(302)    
+      .end(function (err, res) {
+        if (err) {
+          throw err;
+        }
+        test.done();
+      });     
   }
 };

@@ -7,7 +7,7 @@ app = express()
 app.get '/', (req, res) ->
 	res.send('hello')
 
-app.get '/:q', (req, res) ->
+app.get '/face/:q', (req, res) ->
 	q = req.param 'q'
 
 	#request "http://www.google.com/search?&q=luke+donald&tbs=itp:face#q=#{q}&safe=off&tbm=isch&tbs=itp:face", (err, response, body) ->
@@ -25,6 +25,25 @@ app.get '/:q', (req, res) ->
 		else
 			res.status(500).send('500')
 			#res.set('Content-Type', 'text/plain').send(body);
+
+
+app.get '/flag/:q', (req, res) ->
+	q = req.param 'q'
+
+	request "http://bing.com/images/search?qpvt=#{q}&q=#{q}", (err, response, body) ->
+		ok = false
+		console.log(response.statusCode + ' - ' + err)
+		if !err and response.statusCode == 200
+			img_url = getimage.get body
+			console.log('url: ' + img_url)
+			if img_url
+				ok = true
+
+		if ok
+			res.redirect img_url
+		else
+			res.status(500).send('500')
+			#res.set('Content-Type', 'text/plain').send(body);			
 		
 
 exports.app = app
