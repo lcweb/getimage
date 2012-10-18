@@ -37,6 +37,7 @@ app.get('/face/:q', function(req, res) {
 app.get('/flag/:q', function(req, res) {
   var q;
   q = req.param('q');
+  q = q + '+national+flag';
   return request("http://bing.com/images/search?qpvt=" + q + "&q=" + q, function(err, response, body) {
     var img_url, ok;
     ok = false;

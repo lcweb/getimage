@@ -29,6 +29,7 @@ app.get '/face/:q', (req, res) ->
 
 app.get '/flag/:q', (req, res) ->
 	q = req.param 'q'
+	q = q + '+national+flag'
 
 	request "http://bing.com/images/search?qpvt=#{q}&q=#{q}", (err, response, body) ->
 		ok = false
