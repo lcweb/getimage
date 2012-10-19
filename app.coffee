@@ -44,7 +44,16 @@ app.get '/flag/:q', (req, res) ->
 			res.redirect img_url
 		else
 			res.status(500).send('500')
-			#res.set('Content-Type', 'text/plain').send(body);			
+			#res.set('Content-Type', 'text/plain').send(body);	
+
+app.get '/proxy', (req, res) ->
+	url = req.param 'url'
+
+	request url, (err, response, body) ->
+		if !err and response.statusCode == 200
+			res.send body
+		else
+			res.status(500).send('500')
 		
 
 exports.app = app

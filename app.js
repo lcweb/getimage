@@ -57,6 +57,18 @@ app.get('/flag/:q', function(req, res) {
   });
 });
 
+app.get('/proxy', function(req, res) {
+  var url;
+  url = req.param('url');
+  return request(url, function(err, response, body) {
+    if (!err && response.statusCode === 200) {
+      return res.send(body);
+    } else {
+      return res.status(500).send('500');
+    }
+  });
+});
+
 exports.app = app;
 
 port = process.env.PORT || 5000;

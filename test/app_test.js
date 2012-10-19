@@ -50,5 +50,17 @@ exports['awesome'] = {
         }
         test.done();
       });     
-  }
+    },
+
+  'proxy': function(test) {
+    supertest(app)
+      .get('/proxy?url=http://en.wikipedia.org/wiki/FIBA_World_Rankings')
+      .expect(200)    
+      .end(function (err, res) {
+        if (err) {
+          throw err;
+        }
+        test.done();
+      });     
+  }    
 };
