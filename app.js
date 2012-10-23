@@ -60,11 +60,16 @@ app.get('/flag/:q', function(req, res) {
 app.get('/proxy', function(req, res) {
   var url;
   url = req.param('url');
-  return request(url, function(err, response, body) {
+  return request({
+    uri: url,
+    headers: {
+      'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4'
+    }
+  }, function(err, response, body) {
     if (!err && response.statusCode === 200) {
       return res.send(body);
     } else {
-      return res.status(500).send('500');
+      return res.status(500).send('500 ' + response.statusCode);
     }
   });
 });

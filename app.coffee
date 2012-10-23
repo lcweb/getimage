@@ -49,11 +49,11 @@ app.get '/flag/:q', (req, res) ->
 app.get '/proxy', (req, res) ->
 	url = req.param 'url'
 
-	request url, (err, response, body) ->
+	request {uri: url, headers:{'user-agent':'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_8_2) AppleWebKit/537.4 (KHTML, like Gecko) Chrome/22.0.1229.94 Safari/537.4'}}, (err, response, body) ->
 		if !err and response.statusCode == 200
 			res.send body
 		else
-			res.status(500).send('500')
+			res.status(500).send('500 ' + response.statusCode)
 		
 
 exports.app = app
