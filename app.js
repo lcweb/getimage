@@ -15,7 +15,7 @@ app.get('/', function(req, res) {
 app.get('/face/:q', function(req, res) {
   var q;
   q = req.param('q');
-  return request("http://prerender.herokuapp.com/http://bing.com/images/search?qpvt=" + q + "&q=" + q + "&qft=+filterui:face-face&FORM=R5IR30", function(err, response, body) {
+  return request("http://prerender1.herokuapp.com/http://bing.com/images/search?qpvt=" + q + "&q=" + q + "&qft=+filterui:face-face&FORM=R5IR30", function(err, response, body) {
     var img_url, ok;
     ok = false;
     console.log(response.statusCode + ' - ' + err);
@@ -38,7 +38,7 @@ app.get('/flag/:q', function(req, res) {
   var q;
   q = req.param('q');
   q = q + '+national+flag';
-  return request("http://prerender.herokuapp.com/http://bing.com/images/search?qpvt=" + q + "&q=" + q, function(err, response, body) {
+  return request("http://prerender1.herokuapp.com/http://bing.com/images/search?qpvt=" + q + "&q=" + q, function(err, response, body) {
     var img_url, ok;
     ok = false;
     console.log(response.statusCode + ' - ' + err);

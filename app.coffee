@@ -11,7 +11,7 @@ app.get '/face/:q', (req, res) ->
 	q = req.param 'q'
 
 	#request "http://www.google.com/search?&q=luke+donald&tbs=itp:face#q=#{q}&safe=off&tbm=isch&tbs=itp:face", (err, response, body) ->
-	request "http://prerender.herokuapp.com/http://bing.com/images/search?qpvt=#{q}&q=#{q}&qft=+filterui:face-face&FORM=R5IR30", (err, response, body) ->
+	request "http://prerender1.herokuapp.com/http://bing.com/images/search?qpvt=#{q}&q=#{q}&qft=+filterui:face-face&FORM=R5IR30", (err, response, body) ->
 		ok = false
 		console.log(response.statusCode + ' - ' + err)
 		if !err and response.statusCode == 200
@@ -31,7 +31,7 @@ app.get '/flag/:q', (req, res) ->
 	q = req.param 'q'
 	q = q + '+national+flag'
 
-	request "http://prerender.herokuapp.com/http://bing.com/images/search?qpvt=#{q}&q=#{q}", (err, response, body) ->
+	request "http://prerender1.herokuapp.com/http://bing.com/images/search?qpvt=#{q}&q=#{q}", (err, response, body) ->
 		ok = false
 		console.log(response.statusCode + ' - ' + err)
 		if !err and response.statusCode == 200
